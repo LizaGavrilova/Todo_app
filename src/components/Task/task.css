@@ -84,3 +84,8 @@ label .description {
 .edit {
 	display: none;
 }
+
+.completed label .description {
+	color: #cdcdcd;
+	text-decoration: line-through;
+}

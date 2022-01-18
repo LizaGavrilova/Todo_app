@@ -1,15 +1,18 @@
-import React from 'react';
+import React, { Component } from 'react';
 
 import Task from '../Task/task';
 import './taskList.css';
 
-const TaskList = ({ todos }) => {
+class TaskList extends Component {
+  render() {
+    const {todos, onDeleted} = this.props;
+
     const elements = todos.map( (item) => {
       return (
-        <li key={item.id}>
-          <Task
-            label={item.label} />
-        </li>
+        <Task
+          key={item.id}
+          label={item.label}
+          onDeleted={ () => onDeleted(item.id)} />
       );
     });
 
@@ -18,6 +21,7 @@ const TaskList = ({ todos }) => {
         { elements }
       </ul>
     );
-};
+  }
+}
 
 export default TaskList;
