@@ -5,14 +5,16 @@ import './taskList.css';
 
 class TaskList extends Component {
   render() {
-    const {todos, onDeleted} = this.props;
+    const {todos, onDeleted, onToggleDone} = this.props;
 
     const elements = todos.map( (item) => {
       return (
         <Task
           key={item.id}
           label={item.label}
-          onDeleted={ () => onDeleted(item.id)} />
+          done={item.done}
+          onDeleted={ () => onDeleted(item.id)}
+          onToggleDone={ () => onToggleDone(item.id)} />
       );
     });
 

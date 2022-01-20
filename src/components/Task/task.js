@@ -3,25 +3,9 @@ import React, { Component } from "react";
 import './task.css';
 
 class Task extends Component {
-    constructor() {
-        super();
-    
-        this.state = {
-          done: false
-        };
-    
-        this.onCheckboxClick = () => {
-          this.setState((state) => {
-            return {
-                done: !state.done
-            };
-          });
-        }
-    }
 
     render() {
-        const { label, onDeleted } = this.props;
-        const { done } = this.state;
+        const { label, done, onDeleted, onToggleDone } = this.props;
 
         let classNames = 'item';
         if(done) {
@@ -33,7 +17,7 @@ class Task extends Component {
                 <div className="view">
                     <input className="toggle"
                            type="checkbox"
-                           onClick={this.onCheckboxClick} />
+                           onClick={onToggleDone} />
                     <label>
                         <span className="description">{ label }</span>
                         {/* <span className="created">created 17 seconds ago</span> */}
