@@ -27,7 +27,7 @@ class Task extends Component {
                             onClick={onDeleted} >
                     </button>          
                 </div>
-                <input type="text" class="edit" value="Editing task"></input>
+                {/* <input type="text" className="edit" value="Editing task"></input> */}
             </li>
         );
     }
