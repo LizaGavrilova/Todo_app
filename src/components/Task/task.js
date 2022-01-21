@@ -35,7 +35,7 @@ class Task extends Component {
                     <input className="toggle"
                            type="checkbox"
                            onClick={onToggleDone}
-                           checked={done} />
+                           defaultChecked={done} />
                     <label>
                         <span className="description">{ label }</span>
                         <span className="created">created {timeAfterCreate} ago</span>
