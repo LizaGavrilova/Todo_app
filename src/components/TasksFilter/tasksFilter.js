@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import './tasksFilter.css';
 
@@ -9,6 +10,15 @@ const filterButtons = [
 ];
 
 class TasksFilter extends Component {
+
+    static defaultProps = {
+        onFilterChange: () => {}
+    };
+
+    static propTypes = {
+        onFilterChange: PropTypes.func
+    };
+
     render() {
         const {filter, onFilterChange} = this.props;
         const buttons = filterButtons.map(({name, label}) => {

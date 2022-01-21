@@ -1,11 +1,28 @@
 import React, { Component } from "react";
+import PropTypes from 'prop-types';
 
 import './task.css';
 
 class Task extends Component {
 
+    static defaultProps = {
+        label: 'Не задано',
+        done: false,
+        onDeleted: () => {},
+        onToggleDone: () => {},
+        timeAfterCreate: "—"
+    };
+
+    static propTypes = {
+        label: PropTypes.string,
+        done: PropTypes.bool,
+        onDeleted: PropTypes.func,
+        onToggleDone: PropTypes.func,
+        timeAfterCreate: PropTypes.string
+    };    
+
     render() {
-        const { label, done, onDeleted, onToggleDone } = this.props;
+        const { label, done, onDeleted, onToggleDone, timeAfterCreate } = this.props;
 
         let classNames = 'item';
         if(done) {
@@ -17,10 +34,11 @@ class Task extends Component {
                 <div className="view">
                     <input className="toggle"
                            type="checkbox"
-                           onClick={onToggleDone} />
+                           onClick={onToggleDone}
+                           checked={done} />
                     <label>
                         <span className="description">{ label }</span>
-                        {/* <span className="created">created 17 seconds ago</span> */}
+                        <span className="created">created {timeAfterCreate} ago</span>
                     </label>  
                     <button className="icon icon-edit"></button>
                     <button className="icon icon-destroy"

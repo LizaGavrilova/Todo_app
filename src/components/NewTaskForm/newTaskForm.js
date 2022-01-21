@@ -1,8 +1,17 @@
 import React, { Component } from "react";
+import PropTypes from 'prop-types';
 
 import './newTaskForm.css';
 
 export default class NewTaskForm extends Component {
+
+    static defaultProps = {
+        onItemAdded: () => {}
+    };
+
+    static propTypes = {
+        onItemAdded: PropTypes.func
+    };
 
     state = {
         label: ""
@@ -16,7 +25,6 @@ export default class NewTaskForm extends Component {
 
     onSubmit = (evt) => {
         evt.preventDefault();
-        console.log('add');
         this.props.onItemAdded(this.state.label);
         this.setState({
             label: ""

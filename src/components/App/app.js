@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 
 import Header from "../Header/header";
 import TaskList from "../TaskList/taskList";
@@ -7,6 +8,21 @@ import Footer from "../Footer/footer";
 import './app.css';
 
 export default class App extends Component {
+
+    static defaultProps = {
+        todoData: [
+            {
+                id: 100,                
+                label: 'What needs to be done?',
+                done: false,
+                dateCreate: new Date()
+            }            
+        ]
+    };
+
+    static propTypes = {
+        todoData: PropTypes.array
+    };
 
     constructor() {
         super();
@@ -17,15 +33,16 @@ export default class App extends Component {
             return {
                 id: this.maxId++,
                 label: label,
-                done: false
+                done: false,
+                dateCreate: new Date()
             }
         }
 
         this.state = {
             todoData: [
-                this.createTodoItem('Completed task'),
-                this.createTodoItem('Editing task'),
-                this.createTodoItem('Active task')
+                this.createTodoItem('Drink tea'),
+                this.createTodoItem('Pet the cat'),
+                this.createTodoItem('Make an app')
             ],
             filter: 'all'
         };
