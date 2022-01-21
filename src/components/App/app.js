@@ -26,7 +26,8 @@ export default class App extends Component {
                 this.createTodoItem('Completed task'),
                 this.createTodoItem('Editing task'),
                 this.createTodoItem('Active task')
-            ]
+            ],
+            filter: 'all'
         };
 
         this.deleteItem = (id) => {
@@ -67,20 +68,53 @@ export default class App extends Component {
                 };
             });
         };
+
+        this.onFilterChange = (filter) => {
+            this.setState({filter});
+        };
+
+        this.onSearchChange = (search) => {
+            this.setState({search});
+        };
+
+        this.filterItems = (items, filter) => {
+            if (filter === 'all') {
+                return items;
+            } else if (filter === 'active') {
+                return items.filter((item) => !item.done)
+            } else if (filter === 'done') {
+                return items.filter((item) => item.done)
+            }
+        };
+
+        this.onDeleteCompleted = () => {           ; 
+            this.setState(({todoData}) => {
+                const items = [...todoData.slice(0)];
+                const newArr = items.filter((item) => !item.done);
+                return {
+                    todoData: newArr
+                }
+            });
+        };
     }
 
     render() {
+        const {todoData, filter} = this.state;
         const doneCount = this.state.todoData.filter((el) => el.done).length;
         const todoCount = this.state.todoData.length - doneCount;
+        const visibleItems = this.filterItems(todoData, filter);
 
         return (
             <div className="todoapp">
                 <Header onItemAdded={this.addItem} />
                 <section className="main">
-                    <TaskList todos={this.state.todoData}
+                    <TaskList todos={visibleItems}
                               onDeleted={this.deleteItem}
                               onToggleDone={this.onToggleDone} />
-                    <Footer toDo={todoCount} />
+                    <Footer toDo={todoCount}
+                            filter={filter}
+                            onFilterChange={this.onFilterChange}
+                            onDeleteCompleted={this.onDeleteCompleted} />
                 </section>
             </div>
         );
