@@ -20,7 +20,6 @@ export default class App extends Component {
   };
 
   static propTypes = {
-    // eslint-disable-next-line react/no-unused-prop-types
     todoData: PropTypes.instanceOf(Array),
   };
 
