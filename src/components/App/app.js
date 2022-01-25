@@ -51,10 +51,7 @@ export default class App extends Component {
     this.deleteItem = (id) => {
       this.setState(({ todoData }) => {
         const idx = todoData.findIndex((el) => el.id === id);
-        const newArray = [
-          ...todoData.slice(0, idx),
-          ...todoData.slice(idx + 1),
-        ];
+        const newArray = [...todoData.slice(0, idx), ...todoData.slice(idx + 1)];
         return {
           todoData: newArray,
         };
@@ -121,11 +118,7 @@ export default class App extends Component {
       <div className="todoapp">
         <Header onItemAdded={this.addItem} />
         <section className="main">
-          <TaskList
-            todos={visibleItems}
-            onDeleted={this.deleteItem}
-            onToggleDone={this.onToggleDone}
-          />
+          <TaskList todos={visibleItems} onDeleted={this.deleteItem} onToggleDone={this.onToggleDone} />
           <Footer
             toDo={todoCount}
             filter={filter}
