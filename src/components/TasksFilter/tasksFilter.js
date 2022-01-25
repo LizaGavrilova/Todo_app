@@ -9,13 +9,16 @@ const filterButtons = [
     { name: 'done', label: 'Completed' }
 ];
 
+// eslint-disable-next-line react/prefer-stateless-function
 class TasksFilter extends Component {
 
     static defaultProps = {
+        filter: 'all',
         onFilterChange: () => {}
     };
 
     static propTypes = {
+        filter: PropTypes.string,
         onFilterChange: PropTypes.func
     };
 

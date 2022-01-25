@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import './task.css';
 
+// eslint-disable-next-line react/prefer-stateless-function
 class Task extends Component {
 
     static defaultProps = {
@@ -40,10 +41,13 @@ class Task extends Component {
                         <span className="description">{ label }</span>
                         <span className="created">created {timeAfterCreate} ago</span>
                     </label>  
-                    <button className="icon icon-edit"></button>
+                    <button className="icon icon-edit"
+                            type="button"
+                            aria-label="Edit" />
                     <button className="icon icon-destroy"
-                            onClick={onDeleted} >
-                    </button>          
+                            type="button"
+                            aria-label="Destroy"
+                            onClick={onDeleted}  />          
                 </div>
                 {/* <input type="text" className="edit" value="Editing task"></input> */}
             </li>

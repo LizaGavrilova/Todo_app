@@ -1,9 +1,19 @@
 import React, { Component } from "react";
+import PropTypes from 'prop-types';
 
-import '../Header/header.css';
+import "./header.css";
 import NewTaskForm from "../NewTaskForm/newTaskForm";
 
+// eslint-disable-next-line react/prefer-stateless-function
 class Header extends Component {
+    static defaultProps = {
+        onItemAdded: () => {}
+    };
+
+    static propTypes = {
+        onItemAdded: PropTypes.func
+    };
+
     render() {
         const {onItemAdded} = this.props;
 
