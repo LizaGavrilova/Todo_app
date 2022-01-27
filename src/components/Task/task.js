@@ -31,7 +31,8 @@ class Task extends Component {
   };
 
   render() {
-    const { id, label, done, editing, onDeleted, onToggleDone, timeAfterCreate, onToggleEdit, onToggleLabel } = this.props;
+    const { id, label, done, editing, onDeleted, onToggleDone, timeAfterCreate, onToggleEdit, onToggleLabel } =
+      this.props;
 
     let classNames;
     if (done) {
@@ -46,15 +47,15 @@ class Task extends Component {
         <div className="view">
           <input className="toggle" type="checkbox" onClick={onToggleDone} checked={done} readOnly />
           <label>
-            <span className="description" onClick={onToggleDone} onKeyPress={onToggleDone} role='presentation'>{label}</span>
+            <span className="description" onClick={onToggleDone} onKeyPress={onToggleDone} role="presentation">
+              {label}
+            </span>
             <span className="created">created {timeAfterCreate} ago</span>
           </label>
           <button className="icon icon-edit" type="button" aria-label="Edit" onClick={onToggleEdit} />
           <button className="icon icon-destroy" type="button" aria-label="Destroy" onClick={onDeleted} />
         </div>
-        {editing ? (
-          <ChangeTask id={id} label={label} onToggleLabel={onToggleLabel} />
-        ) : null}
+        {editing ? <ChangeTask id={id} label={label} onToggleLabel={onToggleLabel} /> : null}
       </li>
     );
   }

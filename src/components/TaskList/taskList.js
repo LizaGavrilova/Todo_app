@@ -12,7 +12,7 @@ class TaskList extends Component {
     onDeleted: () => {},
     onToggleDone: () => {},
     onToggleEdit: () => {},
-    onToggleLabel: () => {}
+    onToggleLabel: () => {},
   };
 
   static propTypes = {
@@ -20,7 +20,7 @@ class TaskList extends Component {
     onDeleted: PropTypes.func,
     onToggleDone: PropTypes.func,
     onToggleEdit: PropTypes.func,
-    onToggleLabel: PropTypes.func
+    onToggleLabel: PropTypes.func,
   };
 
   render() {
@@ -42,7 +42,6 @@ class TaskList extends Component {
           onToggleEdit={() => onToggleEdit(item.id)}
           onToggleLabel={onToggleLabel}
         />
-
       );
     });
 

@@ -15,7 +15,7 @@ export default class App extends Component {
         label: 'What needs to be done?',
         done: false,
         dateCreate: new Date(),
-        editing: false
+        editing: false,
       },
     ],
   };
@@ -37,7 +37,7 @@ export default class App extends Component {
         label,
         done: false,
         editing: false,
-        dateCreate: new Date()
+        dateCreate: new Date(),
       };
     };
 
@@ -120,10 +120,10 @@ export default class App extends Component {
         const items = [...todoData.slice(0)];
         const idx = items.findIndex((el) => el.id === id);
         const oldItem = items[idx];
-        const newItem = {...oldItem, label, done: false, editing: false};        
+        const newItem = { ...oldItem, label, done: false, editing: false };
 
         return {
-          todoData: [...items.slice(0, idx), newItem, ...items.slice(idx + 1)]
+          todoData: [...items.slice(0, idx), newItem, ...items.slice(idx + 1)],
         };
       });
     };
@@ -132,7 +132,10 @@ export default class App extends Component {
   render() {
     const { todoData, filter } = this.state;
     const doneCount = todoData.filter((el) => el.done).length;
-    const visibleItems = this.filterItems(todoData.filter((el) => /\S/.test(el.label)), filter);
+    const visibleItems = this.filterItems(
+      todoData.filter((el) => /\S/.test(el.label)),
+      filter
+    );
     const todoCount = todoData.filter((el) => /\S/.test(el.label)).length - doneCount;
 
     return (
