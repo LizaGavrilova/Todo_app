@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import './tasksFilter.css';
+import './TasksFilter.css';
 
 const filterButtons = [
   { name: 'all', label: 'All' },

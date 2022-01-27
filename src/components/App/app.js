@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import Header from '../Header/header';
-import TaskList from '../TaskList/taskList';
-import Footer from '../Footer/footer';
+import Header from '../Header/Header';
+import TaskList from '../TaskList/TaskList';
+import Footer from '../Footer/Footer';
 
-import './app.css';
+import './App.scss';
 
 export default class App extends Component {
   static defaultProps = {
@@ -15,6 +15,7 @@ export default class App extends Component {
         label: 'What needs to be done?',
         done: false,
         dateCreate: new Date(),
+        editing: false
       },
     ],
   };
@@ -35,7 +36,8 @@ export default class App extends Component {
         id: this.maxId,
         label,
         done: false,
-        dateCreate: new Date(),
+        editing: false,
+        dateCreate: new Date()
       };
     };
 
@@ -83,6 +85,12 @@ export default class App extends Component {
       }));
     };
 
+    this.onToggleEdit = (id) => {
+      this.setState(({ todoData }) => ({
+        todoData: this.toggleProperty(todoData, id, 'editing'),
+      }));
+    };
+
     this.onFilterChange = (filter) => {
       this.setState({ filter });
     };
@@ -106,19 +114,38 @@ export default class App extends Component {
         };
       });
     };
+
+    this.onToggleLabel = (id, label) => {
+      this.setState(({ todoData }) => {
+        const items = [...todoData.slice(0)];
+        const idx = items.findIndex((el) => el.id === id);
+        const oldItem = items[idx];
+        const newItem = {...oldItem, label, done: false, editing: false};        
+
+        return {
+          todoData: [...items.slice(0, idx), newItem, ...items.slice(idx + 1)]
+        };
+      });
+    };
   }
 
   render() {
     const { todoData, filter } = this.state;
     const doneCount = todoData.filter((el) => el.done).length;
-    const todoCount = todoData.length - doneCount;
-    const visibleItems = this.filterItems(todoData, filter);
+    const visibleItems = this.filterItems(todoData.filter((el) => /\S/.test(el.label)), filter);
+    const todoCount = todoData.filter((el) => /\S/.test(el.label)).length - doneCount;
 
     return (
       <div className="todoapp">
         <Header onItemAdded={this.addItem} />
         <section className="main">
-          <TaskList todos={visibleItems} onDeleted={this.deleteItem} onToggleDone={this.onToggleDone} />
+          <TaskList
+            todos={visibleItems}
+            onDeleted={this.deleteItem}
+            onToggleDone={this.onToggleDone}
+            onToggleEdit={this.onToggleEdit}
+            onToggleLabel={this.onToggleLabel}
+          />
           <Footer
             toDo={todoCount}
             filter={filter}
