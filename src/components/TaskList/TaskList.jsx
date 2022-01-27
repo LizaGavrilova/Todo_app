@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { formatDistanceToNow } from 'date-fns';
 
-import Task from '../Task/Task';
-import './TaskList.css';
+import Task from '../Task';
+import './TaskList.scss';
 
 // eslint-disable-next-line react/prefer-stateless-function
 class TaskList extends Component {

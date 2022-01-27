@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import './ChangeTask.css';
+import './ChangeTask.scss';
 
 // eslint-disable-next-line react/prefer-stateless-function
 export default class ChangeTask extends Component {

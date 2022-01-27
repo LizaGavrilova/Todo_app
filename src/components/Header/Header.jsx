@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import './Header.css';
-import NewTaskForm from '../NewTaskForm/NewTaskForm';
+import './Header.scss';
+import NewTaskForm from '../NewTaskForm';
 
 // eslint-disable-next-line react/prefer-stateless-function
 class Header extends Component {

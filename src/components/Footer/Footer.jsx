@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import TasksFilter from '../TasksFilter/TasksFilter';
-import './Footer.css';
+import TasksFilter from '../TasksFilter';
+import './Footer.scss';
 
 // eslint-disable-next-line react/prefer-stateless-function
 class Footer extends Component {
