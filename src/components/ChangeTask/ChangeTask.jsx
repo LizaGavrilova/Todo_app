@@ -38,14 +38,16 @@ export default class ChangeTask extends Component {
   render() {
     const { newLabel } = this.state;
     return (
-      <input
-        type="text"
-        className="edit"
-        value={newLabel}
-        onChange={this.onLabelChange}
-        onKeyPress={this.onKeyPress}
-        autoFocus
-      />
+      <label>
+        <input
+          type="text"
+          className="edit"
+          value={newLabel}
+          onChange={this.onLabelChange}
+          onKeyPress={this.onKeyPress}
+          autoFocus
+        />
+      </label>      
     );
   }
 }

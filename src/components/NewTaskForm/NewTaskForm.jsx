@@ -38,6 +38,7 @@ export default class NewTaskForm extends Component {
       <form onSubmit={this.onSubmit}>
         <input
           type="text"
+          id='newTaskForm'
           className="new-todo"
           onChange={this.onLabelChange}
           placeholder="What needs to be done?"

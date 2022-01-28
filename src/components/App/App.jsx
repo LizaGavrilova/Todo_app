@@ -96,6 +96,7 @@ export default class App extends Component {
     };
 
     this.filterItems = (items, filter) => {
+      // items.filter((item) => item.status === filter);;
       if (filter === 'active') {
         return items.filter((item) => !item.done);
       }
