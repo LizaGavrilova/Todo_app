@@ -1,1 +1,1 @@
-https://todo-app-4skjq9oqn-glizagavrilova-yandexru.vercel.app/
+https://todo-app-glizagavrilova-yandexru.vercel.app
